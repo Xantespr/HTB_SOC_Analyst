@@ -4,3 +4,5 @@
 - list of all available providers - `logman.exe query providers`
 - filter providers - `logman.exe query providers | findstr "Winlogon"`
 - functions and keywords of specific provider - `logman.exe query providers Microsoft-Windows-Winlogon`
+### GUI
+- Performance Monitor -> Data collector Sets -> Event Trace Sessions
