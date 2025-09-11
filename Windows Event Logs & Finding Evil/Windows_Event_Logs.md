@@ -59,3 +59,6 @@ New-Object PSObject -Property @{
 ## Detecting Unmanaged PowerShell/C-Sharp Injection
 1. In Event Viewer look for "clr.dll" and "clrjit.dll" in processes that typically don’t require them. Event ID 7
 2. If you want to look for parent, consider checking Event ID 8 = CreateRemoteThread, using TargetProcess id the same as the one you found in first step.
+
+## Detecting Credential Dumping
+1. Sysmon event ID 10 - look for source and target user being different in one event, or random file from random folder attempting to access LSASS `TargetImage: C:\Windows\system32\lsass.exe`
