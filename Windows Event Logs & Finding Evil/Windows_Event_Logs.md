@@ -51,5 +51,11 @@ New-Object PSObject -Property @{
 - retrieves Process Create events from the Microsoft-Windows-Sysmon/Operational log, checks the parent command line of each event for the string -enc, and then displays all properties of any matching events as a list. - `Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-Sysmon/Operational'; ID=1} | Where-Object {$_.Properties[21].Value -like "*-enc*"} | Format-List`
 
 ## Detecting DLL Hijacking
-Event Type 7
+1. download sysmon config: https://github.com/SwiftOnSecurity/sysmon-config
+2. change "ImageLoad onmatch"  from "include" to "exclude"
+3. load new config "sysmon.exe -c sysmonconfig-export.xml"
+4. now logs will be collected, look for Event ID 7 and unsigned images loaded
 
+## Detecting Unmanaged PowerShell/C-Sharp Injection
+1. In Event Viewer look for "clr.dll" and "clrjit.dll" in processes that typically don’t require them. Event ID 7
+2. If you want to look for parent, consider checking Event ID 8 = CreateRemoteThread, using TargetProcess id the same as the one you found in first step.
