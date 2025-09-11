@@ -20,3 +20,4 @@
 ##
 - events distribted over time - `index=* sourcetype=* | bucket _time span=1d | stats count by _time, index, sourcetype | sort - _time`
 - 10 rarest combinations of indexes and sourcetypes - `index=* sourcetype=* | rare limit=10 index, sourcetype`
+- unique - `| stats dc(user) as unique_users`
