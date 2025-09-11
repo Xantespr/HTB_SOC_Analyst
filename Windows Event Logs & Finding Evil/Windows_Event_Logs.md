@@ -62,3 +62,6 @@ New-Object PSObject -Property @{
 
 ## Detecting Credential Dumping
 1. Sysmon event ID 10 - look for source and target user being different in one event, or random file from random folder attempting to access LSASS `TargetImage: C:\Windows\system32\lsass.exe`
+
+## strange parent-child relationship
+1. Look for EVENT ID 1: Process creation
