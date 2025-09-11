@@ -49,4 +49,7 @@ New-Object PSObject -Property @{
 
 - Filtering events based on property values (select all properties of the objects passed to it) - `Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-Sysmon/Operational'; ID=1} -MaxEvents 1 | Select-Object -Property *`
 - retrieves Process Create events from the Microsoft-Windows-Sysmon/Operational log, checks the parent command line of each event for the string -enc, and then displays all properties of any matching events as a list. - `Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-Sysmon/Operational'; ID=1} | Where-Object {$_.Properties[21].Value -like "*-enc*"} | Format-List`
-- 
+
+## Detecting DLL Hijacking
+Event Type 7
+
